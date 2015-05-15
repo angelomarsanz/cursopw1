@@ -1,0 +1,115 @@
+*
+{
+margin: 0%;
+padding: 0%;
+}
+
+#agrupar
+{
+float: left;
+width: 100%;
+margin: 1% auto;
+}
+
+header, section, footer, aside, nav, article, figure, figcaption, hgroup
+{
+ display: block;
+}
+
+#cabecera
+{
+float: left;
+width: 98%;
+padding: 1%;
+background: #FFFBB9;
+}
+
+h1
+{
+font: bold 20px verdana, sans serif;
+margin-bottom: 1%;
+}
+
+#menu
+{
+float: left;
+width: 98%;
+padding: 1%;
+background: #CCCCCC;
+}
+
+#menu li
+{
+display: inline-block;
+list-style: none;
+margin: 0% 0% 0% 1%;
+font: bold 14px verdana, sans serif;
+}
+
+#seccion
+{
+float: left;
+width: 67%;
+margin: 1%;
+}
+
+h2
+{
+font: bold 18px verdana, sans-serif;
+margin-bottom: 1%;
+}
+
+p 
+{
+font-size: 12px;
+}
+
+.texto1
+{
+color: red;
+}
+
+ figcaption
+ {
+ font: italic 14px verdana, sans serif;
+ }
+ 
+ img
+ {
+ max-width: 100%;
+ border: 0;
+ }
+ 
+ article
+ {
+ float: left;
+ width: 100%;
+ background: #FFFBCC;
+ border: 1px solid #999999;
+ padding: 1%;
+ margin-bottom: 1%;
+ }
+ 
+ #columna
+ {
+ float: left;
+ width: 26%;
+ margin: 1%;
+ padding:1%;
+ background: #CCCCCC;
+ }
+ 
+#pie
+{
+float: left;
+width: 100%;
+text-align: center;
+border-top: 1px solid #999999;
+}
+
+
+h3
+{
+font: bold 16px verdana, sans-serif;
+margin-bottom: 1%;
+}
