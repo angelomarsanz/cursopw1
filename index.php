@@ -15,7 +15,7 @@ header ('Content-type: text/html; charset=utf-8');
 						<figure>
 							   <img src="manos.jpg">
 						              <figcaption>
-									      esta es la imagen del mensaje del sitio
+									      esta es la imagen del mensaje del sitio prueba del curso
 									  </figcaption>
 						</figure>
 						<footer>
