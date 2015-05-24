@@ -1,7 +1,12 @@
-<?php 
-header ('Content-type: text/html; charset=utf-8'); 
-include "cabecera.php";
-?>
+﻿<!DOCTYPE html>
+	<html lang="es">
+		<head>
+			<meta charset="utf-8">
+			<meta name="description" content="Ejercicio 1 de Programación web">
+			<meta content="width=device-width, initial-scale=1, minimum-scale=1" name="viewport">
+			<title>Ejercicio 1 de programación web</title>
+			<link href="escritorio.css" rel="stylesheet">	
+		</head>	
 		<body>
 			<section class="formulario">
 <?php
@@ -46,13 +51,33 @@ include "cabecera.php";
 				<form action="insertar_usuario.php" name="insertar" method="post">
 					<p class="etiqueta">Usuario:*</p>
 					<p class="campo"><input type="text" name="usuario" size="10" maxlenght="10" required></p>
+					
 					<p class="etiqueta">Clave:*</p>				
 					<p class="campo"><input type="password" name="clave" id="miclave" size="10" maxlenght="10" required></p>
 					<p class="etiqueta">Correo:*</p>
 					<p class="campo"><input type="email" name="correo" id="micorreo" required></p>
+
+					<p class="etiqueta">Cédula, RIF o pasaporte:
+					<p class="campo">
+						<select name="tipocliente">
+							<option value="" select>&nbsp
+							<option value="V">V
+							<option value="E">E
+							<option value="P">P
+							<option value="J">J
+							<option value="G">G
+						</select>
+						<input type="text" name="cedularif" id="micedularif" size="12" maxlenght="12"></p>
+					
+					<p class="etiqueta">Nombre(s):</p>
+					<p class="campo"><input type="text" name="nombres" id="minombre" size="20" maxlenght="100"></p>
+												
+					<p class="etiqueta">Apellido(s):</p>
+					<p class="campo"><input type="text" name="apellidos" id="miapellido" size="20" maxlenght="100"></p>
+
 					<p class="campo"><input type="submit" name="insertar" value="Registrarse"></p>
 				</form>
-				<p class="campo">Nota: Los datos marcados con (*) deben ser rellenados obligatoriamente</p>
+				<p class="campo">Nota: Los datos marcados con (*) deben ser rellenados obligatoriamente.</p>
 				<p class="campo"><a href="index.html">Volver al inicio</a></p>		
 			</section>
 <?php	

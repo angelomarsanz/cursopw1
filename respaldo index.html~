@@ -1,8 +1,26 @@
 <!DOCTYPE html>
-<?php 
-include "cabecera.php";
-header ('Content-type: text/html; charset=utf-8'); 
-?>
+	<html lang="es">
+		<head>
+			<meta charset="utf-8">
+			<meta name="description" content="Ejercicio 1 de programación web">
+			<meta content="width=device-width, initial-scale=1, minimum-scale=1" name="viewport">
+			<meta name="googlebot" content="noindex, nofollow">
+			<title>Ejercicio 1 de Programación web</title>
+			<link href="escritorio.css" rel="stylesheet">	
+		</head>	
+		<body>
+			<div id="agrupar">
+				<header id="cabecera">
+					<h1>Título de mi Sitio Web</h1>
+				</header>
+				<nav id="menu">
+					<ul>
+							<li>Inicio</li>
+							<li>¿Quiénes somos?</li>
+							<li><a class="opcionmenu" href="insertar_usuario2.php">Registrarse</a></li>
+							<li>Contacto</li>
+					</ul>
+				</nav>
 				<section id="seccion">
 					<article>
 						<header>
@@ -15,7 +33,7 @@ header ('Content-type: text/html; charset=utf-8');
 						<figure>
 							   <img src="manos.jpg">
 						              <figcaption>
-									      esta es la imagen del mensaje del sitio prueba del curso
+									      esta es la imagen del mensaje
 									  </figcaption>
 						</figure>
 						<footer>
@@ -30,6 +48,10 @@ header ('Content-type: text/html; charset=utf-8');
 				   <h3>primer mensaje de la columna lateral</h3>
 				   <h3>segundo mensaje de la columna lateral</h3>
 			    </aside>
-<?php
-include "piedepagina.php";
-?>
+				<footer id="pie">
+				<small>Derechos reservados</small>
+				</footer>
+				
+			</div>
+		</body>
+	</html>
