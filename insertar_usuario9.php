@@ -1,13 +1,8 @@
 ﻿<!DOCTYPE html>
-	<html lang="es">
-		<head>
-			<meta charset="utf-8">
-			<meta name="description" content="Ejercicio 1 de programación web">
-			<meta content="width=device-width, initial-scale=1, minimum-scale=1" name="viewport">
-			<title>Ejercicio 1 de Programación web</title>
-			<link href="escritorio.css" rel="stylesheet">	
-		</head>	
-		<body>
+<?php 
+include "cabecera.php";
+header ('Content-type: text/html; charset=utf-8'); 
+?>
 			<section class="formulario">
 <?php
 	$error = false;
@@ -35,7 +30,7 @@
 				// Validar correo
 				if (trim($correo == ""))
 					{
-						$errores["correo"] = "¡Debe introducir el correo";
+						$errores["correo"] = "¡Debe introducir el correo!";
 						$error = true;											
 					}
 			}	
@@ -57,12 +52,12 @@
 				if (mysqli_query($conn, $sql))
 					{
 						echo "Usuario creado satisfactoriamente";	
-						print ("<p><a href='index.html'>Volver a inicio</a></p>\n"); 
+						print ("<p><a href='index.php'>Volver a inicio</a></p>\n"); 
 					}
 				else	
 					{
 						echo "Error: " . "<p>" . mysqli_error($conn) . "</p>";			
-						print ("<p><a href='insertar_usuario2.php'>Volver al formulario</a></p>\n"); 
+						print ("<p><a href='insertar_usuario3.php'>Volver al formulario</a></p>\n"); 
 					}
 				mysqli_close($conn);
 			}		
@@ -70,7 +65,7 @@
 			{
 ?>						
 				<h1>Registrarse:</h1>
-				<form action="insertar_usuario2.php" name="insertar" method="post">
+				<form action="insertar_usuario3.php" name="insertar" method="post">
 					<p class="campo">Usuario:*<input type="text" name="usuario" size="10" maxlenght="10"
 <?php
 	// Validamos el usuario
@@ -104,10 +99,9 @@
 					<p class="campo"><input type="submit" name="insertar" value="Registrarse"></p>
 				</form>
 				<p class="campo">Nota: Los datos marcados con (*) deben ser rellenados obligatoriamente</p>
-				<p><a href="index.html">Volver al inicio</a></p>		
+				<p><a href="index.php">Volver al inicio</a></p>		
 			</section>
 <?php	
 			}
+include "piedepagina.php";
 ?>
-		</body>
-	</html>					
