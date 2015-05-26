@@ -1,12 +1,7 @@
-<!DOCTYPE html>
-	<html lang="es">
-		<head>
-			<meta charset="utf-8">
-			<meta name="description" content="Ejercicio 1 de programación web">
-			<meta content="width=device-width, initial-scale=1, minimum-scale=1" name="viewport">
-			<title>Ejercicio 1 de Programación web</title>
-			<link href="escritorio.css" rel="stylesheet">	
-		</head>	
+<?php 
+header ('Content-type: text/html; charset=utf-8'); 
+include "cabecera.php";
+?>
 		<body>
 			<div id="agrupar">
 				<header id="cabecera">
@@ -14,10 +9,10 @@
 				</header>
 				<nav id="menu">
 					<ul>
-							<li>Inicio</li>
-							<li>¿Quiénes somos?</li>
-							<li><a class="opcionmenu" href="insertar_usuario2.php">Registrarse</a></li>
-							<li>Contacto</li>
+						<li>Inicio</li>
+						<li>¿Quiénes somos?</li>
+						<li><a class="opcionmenu" href="insertar_usuario2.php">Registrarse</a></li>
+						<li>Contacto</li>
 					</ul>
 				</nav>
 				<section id="seccion">
@@ -32,7 +27,7 @@
 						<figure>
 							   <img src="manos.jpg">
 						              <figcaption>
-									      esta es la imagen del mensaje
+									      esta es la imagen del mensaje del sitio prueba del curso
 									  </figcaption>
 						</figure>
 						<footer>
@@ -49,7 +44,7 @@
 			    </aside>
 				<footer id="pie">
 				<small>Derechos reservados</small>
-				</footer>
+			    </footer>
 				
 			</div>
 		</body>

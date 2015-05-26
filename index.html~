@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-	<html lang="es">
-		<head>
-			<meta charset="utf-8">
-			<meta name="description" content="Ejercicio 1 de programación web">
-			<meta content="width=device-width, initial-scale=1, minimum-scale=1" name="viewport">
-			<meta name="googlebot" content="noindex, nofollow">
-			<title>Ejercicio 1 de Programación web</title>
-			<link href="escritorio.css" rel="stylesheet">	
-		</head>	
+<?php 
+header ('Content-type: text/html; charset=utf-8'); 
+include "cabecera.php";
+?>
 		<body>
 			<div id="agrupar">
 				<header id="cabecera">
@@ -17,7 +11,7 @@
 					<ul>
 							<li>Inicio</li>
 							<li>¿Quiénes somos?</li>
-							<li><a class="opcionmenu" href="insertar_usuario.php">Registrarse</a></li>
+							<li><a class="opcionmenu" href="insertar_usuario2.php">Registrarse</a></li>
 							<li>Contacto</li>
 					</ul>
 				</nav>

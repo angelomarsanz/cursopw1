@@ -146,7 +146,7 @@ include "cabecera.php";
 			<form action="insertar_usuario2.php" name="insertar" method="post">
 
 			<p class="etiqueta">Usuario:*</p>
-				<p class="campo"><input type="text" name="usuario" size="10" maxlenght="10" required
+				<p class="campo"><input type="text" name="usuario" size="10" maxlenght="10" 
 
 <?php
 	/* Si la variable "insertar" existe y tiene algún valor, procedemos 
@@ -168,12 +168,12 @@ include "cabecera.php";
 ?>										
 					
 				<p class="etiqueta">Clave:*</p>				
-				<p class="campo"><input type="password" name="clave" id="miclave" size="10" maxlenght="10" required
+				<p class="campo"><input type="password" name="clave" id="miclave" size="10" maxlenght="10" 
 
 <?php
 
-	/* Si en la variable "$errores" en la posición "clave" existe un valor diferente a "blanco",
-		Entonces mostramos por pantalla el mensaje de "error de usuario" */ 
+	/* Si la variable "insertar" existe y tiene algún valor, procedemos 
+			mostrar por pantalla el valor del usuario */
 		
 	if (isset($_REQUEST['insertar']))
 		print ("value='$clave'></p>");
@@ -191,11 +191,11 @@ include "cabecera.php";
 ?>					
 								
 				<p class="etiqueta">Correo:*</p>
-				<p class="campo"><input type="email" name="correo" id="micorreo" required
+				<p class="campo"><input type="email" name="correo" id="micorreo" 
 <?php
 				
-	/* Si en la variable "$errores" en la posición "correo" existe un valor diferente a "blanco",
-		Entonces mostramos por pantalla el mensaje de "error de usuario" */ 
+	/* Si la variable "insertar" existe y tiene algún valor, procedemos 
+			mostrar por pantalla el valor del usuario */
 		
 	if (isset($_REQUEST['insertar']))
 		print ("value='$correo'></p>");
