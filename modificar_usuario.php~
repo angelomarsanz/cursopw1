@@ -1,7 +1,11 @@
+<!-- Abrimos la etiqueta PHP para ajustar a utf-8 y hacer un include 
+	del encabezado -->
 <?php 
 header ('Content-type: text/html; charset=utf-8'); 
 include "cabecera.php";
 ?>
+<!-- Volvemos a HTML -->
+
 		<body>
 			<section class="formulario">
 
@@ -112,7 +116,7 @@ include "cabecera.php";
 			if (mysqli_query($conn, $sql))
 				{
 					echo "Usuario creado satisfactoriamente";	
-					print ("<p><a href='index.php'>Volver a inicio</a></p>\n"); 
+					print ("<p><a href='index.html'>Volver a inicio</a></p>\n"); 
 
 				}
 
@@ -235,7 +239,7 @@ include "cabecera.php";
 				<p class="campo"><input type="submit" name="insertar" value="Registrarse"></p>
 			</form>
 				<p class="campo">Nota: Los datos marcados con (*) deben ser rellenados obligatoriamente.</p>
-				<p class="campo"><a href="index.php">Volver al inicio</a></p>		
+				<p class="campo"><a href="index.html">Volver al inicio</a></p>		
 		</section>
 
 <!-- Volvemos a abrir la etiqueta de PHP para colocar la llave
