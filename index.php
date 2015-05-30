@@ -13,7 +13,7 @@ include "cabecera.php";
 						<li>Inicio</li>
 						<li>¿Quiénes somos?</li>
 						<li><a class="opcionmenu" href="insertar_usuario2.php">Registrarse</a></li>
-						<li>Contacto</li>
+						<li><a class="opcionmenu" href="modificar_usuario.php">Modificar</a></li>
 					</ul>
 				</nav>
 				<section id="seccion">
