@@ -62,10 +62,10 @@ include "cabecera.php";
 			/* Crear las variables necesarias para conectar con la base de datos y
 				asignarle los valores correspondientes */
 
-			$servername = "sartyprogapp01.db.8347959.hostedresource.com";
-			$username = "sartyprogapp01";
-			$password = "iemE6@2F28Q63454";
-			$dbname = "sartyprogapp01";
+			$servername = "localhost";
+			$username = "cursophp";
+			$password = "";
+			$dbname = "clientes";
 
 			/* Creamos la variable "$conn" y le asignamos la instrucción "mysqli_connect" y las variables
 				necesarias para conectar a la base de datos "clientes" */
