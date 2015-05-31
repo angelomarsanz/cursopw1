@@ -122,7 +122,7 @@
 	<p class="etiqueta">Cédula, RIF o pasaporte:
 	<p class="campo">
 		<select name="tipocliente">
-			<option value="<?php echo $tipo_cliente; ?>" select>"<?php echo $tipo_cliente; ?>"
+			<option value="<?php echo $tipo_cliente; ?>" select><?php echo $tipo_cliente; ?>
 			<option value="">&nbsp
 			<option value="V">V
 			<option value="E">E
