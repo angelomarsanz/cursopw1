@@ -1,4 +1,5 @@
 <?php 
+session_start();
 header ('Content-type: text/html; charset=utf-8'); 
 include "cabecera.php";
 ?>
@@ -34,41 +35,10 @@ include "cabecera.php";
 
 			// Validamos los datos obligatorios*
 
-			/* Si la variable "$usuario" tiene espacios en blanco,
-				quiere decir que el usuario no introdujo nada en este campo,
-				entonces asignamos un mensaje en la variable "$errores" y 
-				asignamos el valor "true" a la variable "$error"
-				para mostrarlos después al usuario */
+			include "validarusuario.php";
+			include "validarclave.php";
+			include "validarcorreo.php";
 
-			if (trim($usuario) == "")
-				{
-					$errores["usuario"] = "¡Debe introducir el usuario!";
-					$error = true;
-				}
-
-			/* Si la variable "$clave" tiene espacios en blanco,
-				quiere decir que el usuario no introdujo nada en este campo,
-				entonces asignamos un mensaje en la variable "$errores" y 
-				asignamos el valor "true" a la variable "$error"
-				para mostrarlos después al usuario */
-
-			if (trim($clave) == "")
-				{
-					$errores["clave"] = "¡Debe introducir la clave!";
-					$error = true;
-				}
-
-			/* Si la variable "$correo" tiene espacios en blanco,
-				quiere decir que el usuario no introdujo nada en este campo,
-				entonces asignamos un mensaje en la variable "$errores" y 
-				asignamos el valor "true" a la variable "$error"
-				para mostrarlos después al usuario */
-
-			if (trim($correo) == "")
-				{
-					$errores["correo"] = "¡Debe introducir el correo!";
-					$error = true;
-				}
 		}
 
 	/* Si la variable "insertar" existe y tiene algún valor y además el valor de la variable "error" es "false", 
@@ -78,28 +48,7 @@ include "cabecera.php";
 	if (isset($_REQUEST['insertar']) && !($error))
 		{									
 
-			/* Crear las variables necesarias para conectar con la base de datos y
-				asignarle los valores correspondientes */
-
-			$servername = "localhost";
-			$username = "cursophp";
-			$password = "";
-			$dbname = "clientes";
-
-			/* Creamos la variable "$conn" y le asignamos la instrucción "mysqli_connect" y las variables
-				necesarias para conectar a la base de datos "clientes" */
-
-			$conn = mysqli_connect ($servername, $username, $password, $dbname);
-
-			/* Intentamos conectarnos, si al intentar la variable "$conn" retorna el valor "false", 
-				quiere decir que la conexión a la base de datos falló, entonces,
-				abortamos el programa y mostramos un mensaje de error 
-				por pantalla */
-
-			If (!($conn))
-				{
-					die ("Conexión fallida: " . mysqli_connect_error());				
-				}
+			include "conexionbasedatos.php";
 
 			/* Preparamos la variable "$sql" con las instrucciones necesarias y los datos introducidos por el usuario,
 				para después insertarlos en la tabla "usuario" de la base de datos "cliente" */

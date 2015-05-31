@@ -1,4 +1,5 @@
 <?php 
+session_start();
 header ('Content-type: text/html; charset=utf-8'); 
 include "cabecera.php";
 ?>
@@ -13,7 +14,7 @@ include "cabecera.php";
 						<li>Inicio</li>
 						<li>¿Quiénes somos?</li>
 						<li><a class="opcionmenu" href="insertar_usuario2.php">Registrarse</a></li>
-						<li><a class="opcionmenu" href="acceder_usuario.php">Modificar</a></li>
+						<li><a class="opcionmenu" href="acceder_usuario.php">Modificar perfil</a></li>
 					</ul>
 				</nav>
 				<section id="seccion">
