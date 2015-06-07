@@ -46,29 +46,38 @@
 			para acceder a la cuenta del usuario
 			en la base de datos "clientes" */
 				
-		$sql = "update usuario set correo='123' where usuario='angel'";
+		$sql = "SELECT * FROM usuario WHERE usuario = '$usuario' and clave = '$clave'";
 
-		/* Si se actualizaron correctamente los datos en la tabla "usuario" de la base de datos
-			"clientes", entonces procedemos a... */
-			
-		if (mysqli_query($conn, $sql))
-			{
-			echo "Usuario modificado satisfactoriamente";	
-			print ("<p><a href='index.php'>Volver a inicio</a></p>\n"); 
-			}
+		/* Intentamos acceder a la cuenta del usuario,
+			si se logra, se sigue el curso normal del programa,
+			pero si hay algún error abortamos el programa
+			y enviamos un mensaje por pantalla */
 
-		// De lo contrario, si no se pudieron insertar los datos, entonces procedemos a...
+  		$result = mysqli_query($conn, $sql) or die ("Fallo al acceder a la cuenta del usuario");
+
+		/* mysqli_num_rows es una función de Php que devuelve el número
+			de registros encontrados en la tabla y si es mayor a "cero"
+			quiere decir que si existe uno o más registros que coinciden
+			con el "usuario" y la "clave" */
 	
-		else	
+		if (mysqli_num_rows($result) > 0) 
 			{
-			echo "Error: " . "<p>" . mysqli_error($conn) . "</p>";			
-			print ("<p><a href='modificar_usuario.php'>Volver al formulario</a></p>\n"); 
-			}
-		
-		// Cerramos la conexión a la base de datos
+			/* mysqli_fetch_asoc es una función que devuelve
+				un arreglo o array que contiene el registro encontrado
+				en la tabla. Ese arreglo lo guardamos en la variable
+				$_SESSION */
 
-		mysqli_close($conn);
- 			
+   			$_SESSION['registro_seleccionado'] = mysqli_fetch_assoc($result);
+
+			include "modificar_usuario.php";
+
+			}
+		else
+			{
+			echo "Usuario o clave inválida";
+			print ("<p><a href='acceder_usuario.php'>Volver al formulario</a></p>\n"); 
+			}
+			
 		/* Liberamos el resul set para reusarlo más adelante */
 			
 		mysqli_free_result($result);

@@ -10,8 +10,6 @@
 		$cedula_rif = $row['cedula_rif'];
 		$nombres = $row['nombres'];
 		$apellidos = $row['apellidos'];
-		$direccion = $row['direccion'];
-		$telefono = $row['telefono'];
 		}
 
 	if (isset($_REQUEST['modificar']))
@@ -25,21 +23,18 @@
 		$cedula_rif = $_REQUEST['cedularif'];
 		$nombres = $_REQUEST['nombres'];
 		$apellidos = $_REQUEST['apellidos'];
-		$direccion = $_REQUEST['direccion'];
-		$telefono = $_REQUEST['telefono'];
 
 		$error = false;
 		$errores = array ("usuario"=>"", "clave"=>"", "correo"=>"");
 
 		include "validarclave.php";
-		include "validarcorreo.php";
 		}
 
 	if (isset($_REQUEST['modificar']) && !($error))
 		{									
 		include "conexionbasedatos.php";
 
-		$sql = "update usuario set clave='$clave', correo='$correo', tipo_cliente='$tipo_cliente', cedula_rif='$cedula_rif', nombres='$nombres', apellidos='$apellidos', direccion='$direccion', telefono='$telefono' where usuario='$usuario'";
+		$sql = "update usuario set clave='$clave', correo='$correo', tipo_cliente='$tipo_cliente', cedula_rif='$cedula_rif', nombres='$nombres', apellidos='$apellidos' where usuario='$usuario'";
 		
 		if (mysqli_query($conn, $sql))
 			{
@@ -93,8 +88,6 @@
 			<option value="V">V
 			<option value="E">E
 			<option value="P">P
-			<option value="J">J
-			<option value="G">G
 		</select>
 		<input type="text" value="<?php echo $cedula_rif; ?>" name="cedularif" id="micedularif" size="12" maxlenght="12"></p>
 					
@@ -103,12 +96,6 @@
 											
 	<p class="etiqueta">Apellido(s):</p>
 	<p class="campo"><input type="text" value="<?php echo $apellidos; ?>" name="apellidos" id="misapellidos" size="20" maxlenght="100"></p>
-
-	<p class="etiqueta">Dirección:</p>
-	<p class="campo"><input type="input" value="<?php echo $direccion; ?>" name="direccion" id="midireccion"></p>
-
-	<p class="etiqueta">Teléfono:</p>
-	<p class="campo"><input type="tel" value="<?php echo $telefono; ?>" name="telefono" id="mitelefono"></p>
 
 	<p class="campo"><input type="submit" name="modificar" value="Modificar"></p>
 
