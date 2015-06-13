@@ -3,7 +3,6 @@ session_start();
 header ('Content-type: text/html; charset=utf-8'); 
 include "cabecera.php";
 ?>
-<!-- Producción -->
 		<body>
 			<div id="agrupar">
 				<header id="cabecera">
@@ -15,6 +14,7 @@ include "cabecera.php";
 						<li>¿Quiénes somos?</li>
 						<li><a class="opcionmenu" href="insertar_usuario2.php">Registrarse</a></li>
 						<li><a class="opcionmenu" href="acceder_usuario.php">Modificar perfil</a></li>
+						<li><a class="opcionmenu" href="mostrar_usuarios.php">Eventos</a></li>
 					</ul>
 				</nav>
 				<section id="seccion">

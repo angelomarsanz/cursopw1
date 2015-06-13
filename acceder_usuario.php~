@@ -36,7 +36,7 @@
 
    			$_SESSION['registro_seleccionado'] = mysqli_fetch_assoc($result);
 
-			include "modificar_usuario.php";
+			include "modificar_usuario_incompleto.php";
 
 			}
 		else

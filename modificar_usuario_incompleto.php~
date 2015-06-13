@@ -55,7 +55,7 @@
 		{
 ?>	
 
-<form action="modificar_usuario.php" name="modificar" method="post">
+<form action="modificar_usuario_incompleto.php" name="modificar" method="post">
 
 	<h1>Modificar datos:</h1>
 
