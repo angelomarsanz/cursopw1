@@ -2,11 +2,14 @@
 	session_start();
 	header ('Content-type: text/html; charset=utf-8'); 
 	include "cabecera.php";
-	$valor = $_GET['IdUsuario'];
-	print ("<body>");
-	print ("<section class='formulario'>");
+	print ("<body>\n");
+	print ("<section class='formulario'>\n");
+
+   	if (isset($_GET['IdUsuario']))
+	   $usuario = $_GET['IdUsuario'];
+
 	$error = false;
-	$errores = array ("tipo_evento"=>"", "nombre_evento"=>"");
+	$errores = array ("nombre_evento"=>"", "fecha_evento"=>"");
 
 	if (isset($_REQUEST['insertar']))
 		{
@@ -18,147 +21,82 @@
 		$fecha_evento = $_REQUEST['fechaevento'];
 		$hora_evento = $_REQUEST['horaevento'];
 
-		include "validartipoevento.php";
 		include "validarnombreevento.php";
+		include "validarfecha.php";
 		}
 
 	if (isset($_REQUEST['insertar']) && !($error))
 		{									
-
-			include "conexionbasedatos.php";
+		include "conexionbasedatos.php";
  			
-			$sql = "INSERT INTO eventos (usuario, tipo_evento, nombre_evento, lugar_evento, fecha_evento, hora_evento) values ('$usuario', '$tipo_evento', '$nombre_evento', '$lugar_evento', '$fecha_evento', '$hora_evento')";
+		$sql = "INSERT INTO eventos (usuario, tipo_evento, nombre_evento, lugar_evento, fecha_evento, hora_evento) values ('$usuario', '$tipo_evento', '$nombre_evento', '$lugar_evento', '$fecha_evento', '$hora_evento')";
 			
-			if (mysqli_query($conn, $sql))
-				{
-					echo "Evento creado satisfactoriamente";	
-					print ("<p><a href='index.php'>Volver a inicio</a></p>\n"); 
-
-				}
-	
-			else	
-				{
-					echo "Error: " . "<p>" . mysqli_error($conn) . "</p>";			
-					print ("<p><a href='agregar_evento.php'>Volver al formulario</a></p>\n"); 
-				}
+		if (mysqli_query($conn, $sql))
+			{
+			echo "Evento creado satisfactoriamente";	
+			print ("<p><a href='index.php'>Volver a inicio</a></p>\n"); 
+			}
+		else	
+			{
+			echo "Error: " . "<p>" . mysqli_error($conn) . "</p>";			
+			print ("<p><a href='agregar_evento.php'>Volver al formulario</a></p>\n"); 
+			}
 
 			mysqli_close($conn);
 		}
-
 	else
 		{
+		print ("<h1>Agregar evento:</h1>\n");
+	        print ("<form action='agregar_evento.php' name='insertar' method='post'>\n");
 
-?>			
-			<h1>Registrarse:</h1>
-			<form action="insertar_usuario2.php" name="insertar" method="post">
-
-			<p class="etiqueta">Usuario:*</p>
-				<p class="campo"><input type="text" name="usuario" size="10" maxlenght="10" 
-
-<?php
-	/* Si la variable "insertar" existe y tiene algún valor, procedemos 
-			mostrar por pantalla el valor del usuario */
-
-	if (isset($_REQUEST['insertar']))
-		print ("value='$usuario'></p>");
-
-	// De lo contrario, mostramos el campo "usuario" en blanco 
-
-	else	
-		print ("></p>");
-
-	/* Si en la variable "$errores" en la posición "usuario" existe un valor diferente a "blanco",
-		Entonces mostramos por pantalla el mensaje de "error de usuario" */ 
-
-	if ($errores["usuario"] != "")
-		print "<p>Error: {$errores['usuario']}</p>";
-?>										
-					
-				<p class="etiqueta">Clave:*</p>				
-				<p class="campo"><input type="password" name="clave" id="miclave" size="10" maxlenght="10" 
-
-<?php
-
-	/* Si la variable "insertar" existe y tiene algún valor, procedemos 
-			mostrar por pantalla el valor del usuario */
-		
-	if (isset($_REQUEST['insertar']))
-		print ("value='$clave'></p>");
-
-	// De lo contrario, mostramos el campo "clave" en blanco 
-
-	else 
-		print ("></p>");
-	
-	/* Si en la variable "$errores" en la posición "clave" existe un valor diferente a "blanco",
-		Entonces mostramos por pantalla el mensaje de "error de usuario" */ 
-	
-	if ($errores["clave"] != "")
-		print "<p>Error {$errores['clave']}</p>";
-?>					
-								
-				<p class="etiqueta">Correo:*</p>
-				<p class="campo"><input type="email" name="correo" id="micorreo" 
-<?php
+		print ("<p class='etiqueta'>Usuario:</p>\n");
+		print ("<p class='campo'><input type='text' name='usuario' size='10' maxlenght='10' value='$usuario' readonly></p>\n");
+							
+		print ("<p class='etiqueta'>Nombre del evento:*</p>\n");
+		print ("<p class='campo'><input type='text' name='nombreevento' size='20' maxlenght='200'");  
 				
-	/* Si la variable "insertar" existe y tiene algún valor, procedemos 
-			mostrar por pantalla el valor del usuario */
-		
-	if (isset($_REQUEST['insertar']))
-		print ("value='$correo'></p>");
+		if (isset($_REQUEST['insertar']))
+			print ("value='$nombre_evento'></p>\n");
+		else
+			print ("></p>\n");
 
-	// De lo contrario, mostramos el campo "correo" en blanco 
+	    	if ($errores["nombre_evento"] != "")
+			print "<p>Error {$errores['nombre_evento']}</p>\n";
+																		
+		print ("<p class='etiqueta'>Fecha del evento (AAAA-MM-DD):</p>\n");
+		print ("<p class='campo'><input type='text' name='fechaevento'></p>\n");
 
-	else
-		print ("></p>");
+	    	if ($errores["fecha_evento"] != "")
+			print "<p>Error {$errores['fecha_evento']}</p>\n";
 
-	/* Si en la variable "$errores" en la posición "clave" existe un valor diferente a "blanco",
-		Entonces mostramos por pantalla el mensaje de "error de usuario" */ 
+		print ("<p class='etiqueta'>Hora del evento (Formato 24 horas):</p>\n");
+		print ("<p class='campo'><input type='text' name='horaevento'></p>\n");
 
-	if ($errores["correo"] != "")
-		print "<p>Error {$errores['correo']}</p>";
-				
-?>				
-				<p class="etiqueta">Cédula, RIF o pasaporte:
-				<p class="campo">
-					<select name="tipocliente">
-						<option value="" select>&nbsp
-						<option value="V">V
-						<option value="E">E
-						<option value="P">P
-						<option value="J">J
-						<option value="G">G
-					</select>
-					<input type="text" name="cedularif" id="micedularif" size="12" maxlenght="12"></p>
-					
-				<p class="etiqueta">Nombre(s):</p>
-				<p class="campo"><input type="text" name="nombres" id="misnombres" size="20" maxlenght="100"></p>
-											
-				<p class="etiqueta">Apellido(s):</p>
-				<p class="campo"><input type="text" name="apellidos" id="misapellidos" size="20" maxlenght="100"></p>
+		print ("<p class='etiqueta'>Lugar del evento:</p>\n");
+		print ("<p class='campo'><input type='text' name='lugarevento' size='20' maxlenght='200'></p>\n");
 
-				<p class="etiqueta">Dirección:</p>
-				<p class="campo"><input type="input" name="direccion" id="midireccion"></p>
+		print ("<p class='etiqueta'>Tipo de evento:</p>\n");
+	        print ("<p class='campo'>
+     				<select name='tipoevento'>
+					<option value='' select>&nbsp
+					<option value='Cumpleaños'>Cumpleaños
+					<option value='Quinceaños'>Quince años
+					<option value='Boda'>Boda
+					<option value='Bautizo'>Bautizo
+					<option value='Despedida de soltero'>Despedida de soltero
+					<option value='Inauguración'>Inauguración
+					<option value='Otro'>Otro
+				</select>");                  							
 
-				<p class="etiqueta">Teléfono:</p>
-				<p class="campo"><input type="tel" name="telefono" id="mitelefono"></p>
+		print ("<p class='campo'><input type='submit' name='insertar' value='Agregar evento'></p>\n");
+		print ("</form>\n");
 
-				<p class="campo"><input type="submit" name="insertar" value="Registrarse"></p>
-			</form>
-				<p class="campo">Nota: Los datos marcados con (*) deben ser rellenados obligatoriamente.</p>
-				<p class="campo"><a href="index.php">Volver al inicio</a></p>		
-		</section>
+		print ("<p class='campo'>Nota: Los datos marcados con (*) deben ser rellenados obligatoriamente.</p>\n");
+		print ("<p class='campo'><a href='mostrar_usuario.php'>Regresar</a></p>\n");		
+		print ("</section>\n");
 
-<!-- Volvemos a abrir la etiqueta de PHP para colocar la llave
-	del último "else" -->
-<?php	
-			}
-// Cerramos la etiqueta de PHP para volver a HTML
+		}
 
+	print ("</body>\n");
+	print ("</html>\n");					
 ?>
-
-		</body>
-	</html>					
-
-
-

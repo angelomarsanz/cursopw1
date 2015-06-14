@@ -15,8 +15,8 @@
                 for ($i=0; $i<mysqli_num_rows($result); $i++)
 			{	
 			$row = mysqli_fetch_assoc($result);
-			print ("<p><a href='agregar_evento.php?IdUsuario=" . $row['usuario'] . "'>
-                                   <img border='0' src='imagenes/ico-fichero.gif'></a>&nbsp;&nbsp;&nbsp;"
+			print ("<p><a href='agregar_evento.php?IdUsuario=" . $row['usuario'] . "' title='Agregar evento'>
+                                   <img border='0' src='imagenes/agregar.jpeg'></a>&nbsp;&nbsp;&nbsp;"
                                     . $nombres = $row['nombres'] . $apellidos = $row['apellidos'] . "</p>\n");
 			}
 		}
