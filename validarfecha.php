@@ -1,7 +1,7 @@
 <?php
 	function validarformato($fecha_evento_formato)
 		{
-		if (ereg ("([0-9]{4})-([0-9]{1,2})-([0-9]{1,2})", $fecha_evento_formato, $registros)) 
+		if (preg_match('#^\d{4}\-\d{1,2}\-\d{1,2}$#', $fecha_evento_formato))
 			{
                    	$error_formato = false;
 			}
