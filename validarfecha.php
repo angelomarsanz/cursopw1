@@ -13,13 +13,17 @@
 		return $error_formato;
 		}
 			
-	if (trim($fecha_evento) != "")
-		{
-		$error = validarformato($fecha_evento);                
-                if ($error)
-			{	
-			$errores["fecha_evento"] = "¡Introdujo incorrectamente la fecha!";
+	if (trim($fecha_evento) == "")
+			{
+			$errores["fecha_evento"] = "¡Debe introducir la fecha del evento!";
+			$error = true;				
 			}
-		}
+	else		
+			{
+			$error = validarformato($fecha_evento);                
+				if ($error)
+					{	
+						$errores["fecha_evento"] = "¡Introdujo incorrectamente la fecha!";
+					}
+			}
 ?>
-
