@@ -33,14 +33,13 @@
 			
 		if (mysqli_query($conn, $sql))
 			{
-			echo "Evento creado satisfactoriamente";
 
 			$ultimo_registro = mysqli_insert_id($conn);
 
-			print ("<p><a href='agregar_fotos.php?IdEvento=" . $ultimo_registro . "' title='Agregar fotos'>
-                                   <img border='0' src='imagenes/agregar.jpeg'></a>&nbsp;&nbsp;&nbsp;"
-                                    . $nombre_evento . "</p>\n");
-
+			print ("<p>Evento creado satisfactoriamente: $nombre_evento</p>\n");
+			
+			print ("<p><a href='agregar_fotos.php?IdEvento=" . $ultimo_registro . "&NombreEvento=" . $nombre_evento . "'>Agregar fotos del evento</a></p>\n");		
+			
 			print ("<p><a href='index.php'>Volver a inicio</a></p>\n"); 
 			}
 		else	
