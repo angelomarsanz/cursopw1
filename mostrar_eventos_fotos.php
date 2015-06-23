@@ -4,34 +4,29 @@
 	include "cabecera.php";
     print ("<body>\n");
     print ("<section class='formulario'>\n");
-	$usuario = "";
-	$id_evento = 0;	
+	$usuario = "";	
 	$nombre_evento = ""; 
 	if (isset($_SESSION['id_usuario']))
 	{	
 		$usuario = $_SESSION['id_usuario'];		
-		if (isset($_GET['IdEvento']))
-			$id_evento = $_GET['IdEvento'];				
-		if (isset($_GET['NombreEvento']))
-			$nombre_evento = $_GET['NombreEvento'];		
 		include "conexionbasedatos.php";
-		$sql = "SELECT * FROM fotos WHERE id_evento = '$id_evento' ORDER BY foto ASC";
-		$result = mysqli_query($conn, $sql) or die ("Fallo al acceder a la tabla fotos");
+		$sql = "SELECT * FROM eventos WHERE usuario = '$usuario' ORDER BY nombre_evento ASC";
+		$result = mysqli_query($conn, $sql) or die ("Fallo al acceder a la tabla eventos");
 		if (mysqli_num_rows($result) > 0) 
 		{
-			print ("<h3>Fotos del evento: $nombre_evento</h3>\n");
+			print ("<h3>Eventos del usuario: $usuario</h3>\n");
                 for ($i=0; $i<mysqli_num_rows($result); $i++)
 				{	
 					$row = mysqli_fetch_assoc($result);
-					print ("<figure>\n");
-					print ("<img src='fotos/" . $row['foto'] . "'>\n");
-					print ("</figure>");
+					print ("<p><a href='fotos.php?IdEvento=" . $row['id_evento'] . "&NombreEvento=" . $row['nombre_evento'] . "'title='Ver fotos'>
+                                   <img border='0' src='imagenes/iconocamara.png'></a>&nbsp;&nbsp;&nbsp;"
+                                    . $nombre_evento = $row['nombre_evento'] . "</p>\n");
 				}
 		}
 	}
 	else
 		{
-		echo "Error al acceder la tabla fotos";
+		echo "Error al acceder la tabla eventos";
 		print ("<p><a href='index.php'>Volver al inicio</a></p>\n"); 
 		}
 				

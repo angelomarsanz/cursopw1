@@ -17,7 +17,7 @@
 			$row = mysqli_fetch_assoc($result);
 			print ("<p><a href='agregar_evento.php?IdUsuario=" . $row['usuario'] . "' title='Agregar evento'>
                                    <img border='0' src='imagenes/agregar.jpeg'></a>&nbsp;&nbsp;&nbsp;"
-                                    . $nombres = $row['nombres'] . $apellidos = $row['apellidos'] . "</p>\n");
+                                    . $nombres = $row['nombres'] . "&nbsp;" . $apellidos = $row['apellidos'] . "</p>\n");
 			}
 		}
 	else
