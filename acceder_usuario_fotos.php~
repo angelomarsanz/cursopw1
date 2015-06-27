@@ -37,7 +37,7 @@
 		}
 	else
 	{
-		print("<h1>Fotos de usuario:</h1>\n");
+		print("<h1>Modificar la cuenta de usuario:</h1>\n");
 		print("<form action='acceder_usuario_fotos.php' name='acceder' method='post'>\n");
 		print("<p class='etiqueta'>Usuario:*</p>\n");
 		print("<p class='campo'><input type='text' name='usuario' size='10' maxlenght='10'"); 

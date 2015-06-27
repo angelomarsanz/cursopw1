@@ -98,7 +98,7 @@
 		print ("</form>\n");
 
 		print ("<p class='campo'>Nota: Los datos marcados con (*) deben ser rellenados obligatoriamente.</p>\n");
-		print ("<p class='campo'><a href='mostrar_usuario.php'>Regresar</a></p>\n");		
+		print ("<p class='campo'><a href='mostrar_usuarios.php'>Regresar</a></p>\n");		
 		print ("</section>\n");
 
 		}
