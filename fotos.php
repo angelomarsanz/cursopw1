@@ -11,11 +11,14 @@
 	{	
 		$usuario = $_SESSION['id_usuario'];		
 		if (isset($_GET['IdEvento']))
+		{	
 			$id_evento = $_GET['IdEvento'];				
+			$_SESSION['id_evento'] = $id_evento;
+		}
 		if (isset($_GET['NombreEvento']))
 			$nombre_evento = $_GET['NombreEvento'];		
 		include "conexionbasedatos.php";
-		$sql = "SELECT * FROM fotos WHERE id_evento = '$id_evento' ORDER BY foto ASC";
+		$sql = "SELECT * FROM fotos WHERE id_evento = '$id_evento' ORDER BY id_foto ASC";
 		$result = mysqli_query($conn, $sql) or die ("Fallo al acceder a la tabla fotos");
 		if (mysqli_num_rows($result) > 0) 
 		{
