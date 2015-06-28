@@ -2,32 +2,34 @@
    	session_start(); 
 	header ('Content-type: text/html; charset=utf-8');  
 	include "cabecera.php";
-    	print ("<body>\n");
-    	print ("<section class='formulario'>\n");
+    print ("<body>\n");
 	$usuario = "";
 	$id_evento = 0;	
 	$nombre_evento = ""; 
+	$fotos_impresion = 0;
+	$fotos_borrar = 0;
 	if (isset($_SESSION['id_usuario']))
 	{	
 		$usuario = $_SESSION['id_usuario'];		
-		if (isset($_GET['IdEvento']))
-		{	
-			$id_evento = $_GET['IdEvento'];				
-			$_SESSION['id_evento'] = $id_evento;
-		}
-		if (isset($_GET['NombreEvento']))
-		{
-			$nombre_evento = $_GET['NombreEvento'];		
-			$_SESSION['nombre_evento'] = $nombre_evento;
-		}
+		if (isset($_SESSION['id_evento']))
+			$id_evento = $_SESSION['id_evento'];
+		if (isset($_SESSION['nombre_evento']))
+			$nombre_evento = $_SESSION['nombre_evento'];
+		if (isset($_SESSION['fotos_impresion']))
+			$fotos_impresion = $_SESSION['fotos_impresion'];
+		if (isset($_SESSION['fotos_borrar']))
+			$fotos_borrar = $_SESSION['fotos_borrar'];		
 		include "conexionbasedatos.php";
 		$sql = "SELECT * FROM fotos WHERE id_evento = '$id_evento' ORDER BY id_foto ASC";
 		$result = mysqli_query($conn, $sql) or die ("Fallo al acceder a la tabla fotos");
 		if (mysqli_num_rows($result) > 0) 
 		{
 			print ("<form action='procesar_fotos.php' method='post'>\n");		
-			print ("<h3>Fotos del evento: $nombre_evento</h3>\n");
-			print ("<h4>Seleccione las fotos a imprimir y/o eliminar</h4>\n");
+			print ("<h3>Notificación de fotos selecionadas para impresión y/o eliminación</h3>\n"); 
+			print ("<h4>Evento: $nombre_evento</h4>\n");
+			print ("<p>Cantidad de fotos seleccionadas para imprimir: " . $fotos_impresion . "</p>\n");
+			print ("<p>Cantidad de fotos eliminadas: " . $fotos_borrar . "</p>\n");
+			print ("<p>Si desea seleccionar otras fotos para impresión y/o eliminación marque la casilla correspondiente, de lo contrario pulsar el botón volver al inicio</p>\n");
 			print ("<br>\n");
                 for ($i=0; $i<mysqli_num_rows($result); $i++)
 				{	
