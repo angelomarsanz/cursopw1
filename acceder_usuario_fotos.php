@@ -1,9 +1,6 @@
 <?php 
    	session_start(); 
-	header ('Content-type: text/html; charset=utf-8');  
-	include "cabecera.php";
-	print ("<body>\n");
-	print ("<section class='formulario'>\n");
+	header ('Content-type: text/html; charset=utf-8'); 
 	$usuario = "";
 	$clave = "";
 	$error = false;
@@ -24,8 +21,7 @@
 		if (mysqli_num_rows($result) > 0) 
 		{
    			$_SESSION['id_usuario'] = $usuario;
-			header ('Location: mostrar_eventos_fotos.php');
-		}
+			header ('Location: mostrar_eventos_fotos.php');		}
 		else
 		{
 			echo "Usuario o clave inválida";
@@ -34,9 +30,12 @@
 		mysqli_free_result($result);	
 		mysqli_close($conn);
 
-		}
+	}
 	else
 	{
+		include "cabecera.php";
+		print ("<body>\n");
+		print ("<section class='formulario'>\n");
 		print("<h1>Fotos de usuario:</h1>\n");
 		print("<form action='acceder_usuario_fotos.php' name='acceder' method='post'>\n");
 		print("<p class='etiqueta'>Usuario:*</p>\n");
@@ -60,7 +59,7 @@
 		print ("<p class='campo'>Nota: Los datos marcados con (*) deben ser rellenados obligatoriamente.</p>\n");
 		print ("<p class='campo'><a href='index.php'>Volver al inicio</a></p>\n");		
 		print ("</section>\n");
-	}
-	print ("</body>\n");
-	print ("</html>\n");					
-?>
+		print ("</body>\n");
+		print ("</html>\n");					
+		}
+	?>

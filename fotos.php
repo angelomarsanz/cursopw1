@@ -1,9 +1,6 @@
 <?php 
    	session_start(); 
 	header ('Content-type: text/html; charset=utf-8');  
-	include "cabecera.php";
-    	print ("<body>\n");
-    	print ("<section class='formulario'>\n");
 	$usuario = "";
 	$id_evento = 0;	
 	$nombre_evento = ""; 
@@ -25,6 +22,9 @@
 		$result = mysqli_query($conn, $sql) or die ("Fallo al acceder a la tabla fotos");
 		if (mysqli_num_rows($result) > 0) 
 		{
+			include "cabecera.php";
+			print ("<body>\n");
+			print ("<section class='formulario'>\n");				
 			print ("<form action='procesar_fotos.php' method='post'>\n");		
 			print ("<h3>Fotos del evento: $nombre_evento</h3>\n");
 			print ("<h4>Seleccione las fotos a imprimir y/o eliminar</h4>\n");
@@ -46,21 +46,16 @@
 			print ("<input type='submit' NAME='procesar' VALUE='Imprimir y/o eliminar las fotos seleccionadas'>\n");
 			print ("</form>\n");			
 		}
-	}
-	else
+		else
 		{
-		echo "Error al acceder la tabla fotos";
-		print ("<p><a href='index.php'>Volver al inicio</a></p>\n"); 
-		}
-
-	print ("<br>\n");
-	print ("<p>[ <a href='index.php'>Volver al inicio</a> ]</p>\n");	
-				
-	mysqli_free_result($result);
-		
-	mysqli_close($conn);
-
-	print ("</section>\n");
-	print ("</body>\n");
-	print ("</html>\n");
+			echo "Error al acceder la tabla fotos";
+		}				
+		mysqli_free_result($result);		
+		mysqli_close($conn);
+		print ("<br>\n");
+		print ("<p>[ <a href='index.php'>Volver al inicio</a> ]</p>\n");
+		print ("</section>\n");
+		print ("</body>\n");
+		print ("</html>\n");
+	}
 ?>

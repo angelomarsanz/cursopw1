@@ -7,4 +7,3 @@
 			<title>Fotógrafo</title>
 			<link href="escritorio.css" rel="stylesheet">	
 		</head>	
-
