@@ -29,7 +29,7 @@
 		{									
 		include "conexionbasedatos.php";
  			
-		$sql = "INSERT INTO eventos (usuario, tipo_evento, nombre_evento, lugar_evento, fecha_evento, hora_evento) values ('$usuario', '$tipo_evento', '$nombre_evento', '$lugar_evento', '$fecha_evento', '$hora_evento')";
+		$sql = "INSERT INTO eventos (usuario, tipo_evento, nombre_evento, lugar_evento, fecha_evento, hora_evento) values ('$usuario', '$tipo_evento', '$nombre_evento', '$lugar_evento', '$fecha_convertida_bd', '$hora_evento')";
 			
 		if (mysqli_query($conn, $sql))
 			{
@@ -37,9 +37,9 @@
 			$ultimo_registro = mysqli_insert_id($conn);
 
 			print ("<p>Evento creado satisfactoriamente: $nombre_evento</p>\n");
-			
+			print ("<br>\n");
 			print ("<p><a href='agregar_fotos.php?IdEvento=" . $ultimo_registro . "&NombreEvento=" . $nombre_evento . "'>Agregar fotos del evento</a></p>\n");		
-			
+			print ("<br>\n");
 			print ("<p><a href='index.php'>Volver a inicio</a></p>\n"); 
 			}
 		else	
@@ -69,7 +69,7 @@
 	    	if ($errores["nombre_evento"] != "")
 			print "<p>Error {$errores['nombre_evento']}</p>\n";
 																		
-		print ("<p class='etiqueta'>Fecha del evento (AAAA-MM-DD):</p>\n");
+		print ("<p class='etiqueta'>Fecha del evento (DD/MM/AAAA):</p>\n");
 		print ("<p class='campo'><input type='text' name='fechaevento'></p>\n");
 
 	    	if ($errores["fecha_evento"] != "")
