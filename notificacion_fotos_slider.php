@@ -12,7 +12,7 @@
 		include "cabecera.php";
 		print ("<body>\n");
 		print ("<form action='seleccionar_fotos_slider.php' method='post'>\n");		
-		print ("<h3>Notificación de fotos selecionadas para el slider</h3>\n"); 
+		print ("<h3>Notificación de fotos seleccionadas para el slider</h3>\n"); 
 		print ("<p>Cantidad de fotos seleccionadas para el slider: " . $fotos_slider . "</p>\n");
 		print ("<p>Si desea seleccionar otras fotos para el slider marque la casilla correspondiente, de lo contrario pulsar el botón volver al inicio</p>\n");
 		print ("<br>\n");
@@ -21,15 +21,16 @@
 			$row = mysqli_fetch_assoc($result);
 			print ("<figure>\n");
 			print ("<img src='fotos/" . $row['foto'] . "'>\n");		
-			print ("<p>Imprimir&nbsp;<input type='checkbox' name='slider[]' value='" . $row['id_foto'] . "'");
-			if ($row['eliminada'])
+			print ("</figure>\n");
+			print ("<p>Slider&nbsp;<input type='checkbox' name='slider[]' value='" . $row['id_foto'] . "'");
+			if ($row['slider'])
 				print ("checked>");
 			else
 				print (">");
 		}			
 		print ("<br>\n");
 		print ("<br>\n");
-		print ("<input type='submit' NAME='seleccionar' VALUE='Imprimir y/o eliminar las fotos seleccionadas'>\n");
+		print ("<input type='submit' NAME='seleccionar' VALUE='Seleccionar fotos para el slider'>\n");
 		print ("</form>\n");			
 	}
 	else

@@ -6,7 +6,7 @@
 	$foto = "";
 	$ruta_archivo = "";
 	include "conexionbasedatos.php";
-	$sql = "update fotos set eliminada=false";
+	$sql = "update fotos set slider=false";
 	$result = mysqli_query($conn, $sql) or die ("Fallo al actualizar tabla fotos");
 	if (isset($_REQUEST['slider']))
 	{
@@ -14,7 +14,7 @@
 		$nro_fotos_slider = count ($slider);					
 		$i = 0;
 		while ($i<$nro_fotos_slider):
-			$sql = "update fotos set eliminada=true where id_foto='$slider[$i]'";
+			$sql = "update fotos set slider=true where id_foto='$slider[$i]'";
 			$result = mysqli_query($conn, $sql) or die ("Fallo al actualizar tabla fotos");
 			$i++;
 		endwhile;

@@ -18,8 +18,9 @@
 			$row = mysqli_fetch_assoc($result);
 			print ("<figure>\n");
 			print ("<img src='fotos/" . $row['foto'] . "'>\n");
+			print ("</figure>\n");
 			print ("<p>Slider&nbsp;<input type='checkbox' name='slider[]' value='" . $row['id_foto'] . "'");
-			if ($row['eliminada'])
+			if ($row['slider'])
 				print ("checked>");
 			else
 				print (">");
