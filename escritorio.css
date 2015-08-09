@@ -49,7 +49,7 @@ font: bold 14px verdana, sans serif;
 #seccion
 {
 float: left;
-width: 67%;
+width: 98%;
 margin: 1%;
 }
 
@@ -84,11 +84,14 @@ color: red;
  {
  float: left;
  width: 100%;
- background: #FFFBCC;
- border: 1px solid #999999;
- padding: 1%;
  margin-bottom: 1%;
  }
+ 
+ article footer
+{
+text-align: center;
+border-top: 1px solid #999999;
+}
  
  #columna
  {
@@ -139,4 +142,167 @@ width: 98%;
 {
 text-decoration: none;
 color: black;
+}
+
+#slider-container 
+{
+overflow: hidden;
+margin: auto;	
+}
+
+#slider-box 
+{
+-moz-animation: autoSlider 15s infinite linear;
+-o-animation: autoSlider 15s infinite linear;
+-webkit-animation: autoSlider 15s infinite linear;
+animation: autoSlider 15s infinite linear;
+
+height: 100%;
+width: 300%;
+}
+
+.slider-element 
+{
+float: left;
+width: 33.333%;
+}
+
+@-moz-keyframes autoSlider 
+{
+0% 
+	{
+        margin-left: 0;
+    	}
+30% 
+	{
+       	margin-left: 0;
+	}
+35% 
+	{
+       	margin-left: -100%;
+	}
+65% 
+	{
+       	margin-left: -100%;
+  	}
+70% 
+	{
+       	margin-left: -200%;
+   	}
+95% 
+	{
+       	margin-left: -200%;
+   	}
+100% 
+	{
+      	margin-left: -200%;
+    	}
+}
+
+@-webkit-keyframes autoSlider 
+{
+0% 
+	{
+        margin-left: 0;
+    	}
+30% 
+	{
+       	margin-left: 0;
+	}
+35% 
+	{
+       	margin-left: -100%;
+	}
+65% 
+	{
+       	margin-left: -100%;
+  	}
+70% 
+	{
+       	margin-left: -200%;
+   	}
+95% 
+	{
+       	margin-left: -200%;
+   	}
+100% 
+	{
+      	margin-left: -200%;
+    	}
+}
+
+@keyframes autoSlider 
+{
+0% 
+	{
+        margin-left: 0;
+    	}
+30% 
+	{
+       	margin-left: 0;
+	}
+35% 
+	{
+       	margin-left: -100%;
+	}
+65% 
+	{
+       	margin-left: -100%;
+  	}
+70% 
+	{
+       	margin-left: -200%;
+   	}
+95% 
+	{
+       	margin-left: -200%;
+   	}
+100% 
+	{
+      	margin-left: -200%;
+    	}
+}
+
+#logopagina
+{
+float: left;
+width: 5%;
+}
+
+#titulopagina
+{
+float: left;
+width: 80%;
+}
+
+audio
+{
+max-width: 100%;
+}
+
+video
+{
+max-width: 100%;
+}
+
+iframe
+{
+max-width: 100%;
+}
+
+.texto3
+{
+font: italic 14px verdana, sans-serif;
+color: red;
+}
+
+.texto4
+{
+font: italic 20px verdana, sans-serif;
+color: blue;
+}
+
+time
+{
+color: blue;
 }
